@@ -1,0 +1,69 @@
+<link href="./modules/sites/sites.css" type="text/css" rel="stylesheet" media="screen,projection">
+<div id="#sites">
+	<div class="row sitesListRow">
+		<div class="col s6 m4 l3" ng-repeat="site in sites track by site.siteId">
+			<div class="card siteCard">
+				<div class="siteDetails">
+					<p class="siteDetails"><span class="label">Site : </span><span class="value">{{site.siteName}}</span></p>
+					<a class="deleteButton btn-floating waves-effect waves-light red accent-4" ng-click="deleteSite(site)"><i class="mdi-action-delete"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="fixed-action-btn fab-new-site add-fab" style="bottom: 60px; right: 45px;">
+        <a class="btn-floating btn-large waves-effect waves-light button-link " ng-click="createSiteClicked()">
+            <i class="large mdi-content-add"></i>
+        </a>
+    </div>
+
+    <div id="createSiteModal" class="modal">
+        <div class="modal-content">
+            <div class="row content">
+                <div class="col s12">
+                    <div class="row sitenameinput">
+                        <div class="col s12">
+                            <div class="input-field">
+                                <input type="text" id="site_name" ng-model="sitename" ng-focus="inputFocused()">
+                                <label for="site_name">Sitename</label>
+                                <div class="errorName errorNameSitename">
+        							<div id="sitename-error"></div>
+    							</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row submitrow">
+                        <div class="col s12">
+                            <div class="submitButton">
+                                <a class="waves-effect waves-light btn-raised btn addSite" ng-click="createSite()">CREATE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="deleteSiteModel" class="modal">
+            <div class="model-content">
+                <div class="row content">
+                    <div class="col s12">
+                        <div class="row confirmmessage">
+                            <div class="col s12">
+                               <span class="deleteText">Are you sure you want to delete selected site ?</span>
+                            </div>
+                        </div>
+                        <div class="row yesnorow">
+                            <div class="col s12">
+                                <div class="yesnoRow">
+                                    <a class="waves-effect waves-teal btn-flat deleteConfirmButton" ng-click="deleteSite()">DELETE</a>
+                                    <a class="waves-effect waves-grey btn-flat cancelDelete" ng-click="cancelDelete()">CANCEL</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

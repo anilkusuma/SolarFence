@@ -1,0 +1,26 @@
+<link href="./modules/status/status.css" type="text/css" rel="stylesheet" media="screen,projection">
+<div id="#status">
+	<div class="row statusListRow">
+		<div class="col s12 m6 l4" ng-repeat="status in zoneStatus track by status.zoneId">
+			<div class="card statusCard hoverable waves-effect waves-grey" ng-click="zoneStatusClicked(status)">
+                    <div class="statusIcons">
+                        <span class="fenceStatus Status{{status.fenceStatus}}"><i class="fa fa-shield"></i></span>
+                        <span class="lightStatus Status{{status.lightStatus}}"><i class="fa fa-lightbulb-o"></i></span>
+                        <span class="alarmStatus Status{{status.alarmStatus}}"><i class="fa fa-volume-up"></i></span>
+                        <span class="acStatus Status{{status.acStatus}}"><i class="fa fa-plug"></i></span>
+                    </div>
+				<div class="statusDetails">
+                    <div class="statusName">
+                        <p class="zoneName">{{status.zoneName}}</p>
+                    </div>
+                    <div class="voltageValues">
+                        <p class="fenceOut">Fence Output : <span>{{status.fenceOut}}</span></p>
+                        <p class="fenceRet">Fence Retention : <span>{{status.fenceRet}}</span></p>
+                        <p class="batteryVoltage">Battery Voltage : <span>{{status.batteryVoltage}}</span></p>
+                        <p class="spVoltage">spv : <span>{{status.spVoltage}} </span></p>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

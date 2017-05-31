@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html ng-app="Home" ng-controller="HomeMain" >
+<head>
+    <base href="/">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="description" content="Crown Solar fence Control software">
+    <meta name="keywords" content="crown solar fencing,crown group,crown solar software,crown solar fencing software,school management software,school content,schools">
+    <title>Crown Solar Power Fencing Systems</title>
+
+    <!-- Favicons--   #FFFF00  #0277BD> 
+    <link rel="icon" href="./favicon.ico" sizes="32x32"/>
+
+    <!-- CORE CSS--> 
+    <link rel="icon" href="./favicon.ico"/>
+    <link href="./libs/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Abril+Fatface|Material+Icons|Ropa+Sans|Ubuntu+Mono|Fredoka+One|Itim|Abhaya+Libre" rel="stylesheet">
+    <link href="./libs/font-awesome/css/font-awesome.css" type="text/css" rel="stylesheet" media="screen">
+    <link href="./css/style.css" type="text/css" rel="stylesheet" media="screen">
+    <link href="./css/homesa.css" type="text/css" rel="stylesheet" media="screen">
+
+
+</head>
+<body>
+    <header id="header" class="page-topbar">
+        <div class="navbar-fixed">
+            <nav class="navigation-nav">
+                <div class="nav-wrapper">                     
+                    <ul class="left">
+                      <li style="text-align:center"><h1 class="logo-wrapper"><a href="/" class="brand-logo darken-1"><img src="./images/crownPotrait.png" alt="Crown Solar logo"></a> <span class="logo-text">Crown Solar Power Fencing Systems</span></h1></li>
+                    </ul>
+                    <ul class="right rightsideul">                        
+                        <li><a id="logout_button" ng-click="logout()" class="waves-effect waves-block waves-light"><i class="mdi-hardware-keyboard-tab"></i></a>
+                        </li>
+                    </ul
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div id="main">
+        <div class="preloader-div valign-wrapper">
+            <div class="preloader-wrapper active">
+                <div class="spinner-layer spinner-green-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="row tabsContainer" ng-if="adminUser">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s4"><a ng-click="openUsers()" class="active users waves-effect waves-crown waves-ripple">Users</a></li>
+                        <li class="tab col s4"><a ng-click="openSites()" class="sites waves-effect waves-crown waves-ripple">Sites</a></li>
+                        <li class="tab col s4"><a ng-click="openZones()" class="zones waves-effect waves-crown waves-ripple">Zones</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <div ng-view class="page-content" >
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer">
+        <div class="footer-copyright">
+            <div class="container">
+                <div class="copyrightContainer">
+                    &copy; <a class="companyLink" href="http://crownsolar.com/" target="_blank">Crown Solar Power Fencing Systems</a> 
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="application/javascript" src="./libs/jquery/jquery-2.1.1.min.js"></script> 
+    <script src="./libs/angularjs/angular.min.js"></script>
+    <script src="./libs/angularjs/angular-cookies.min.js"></script>
+    <script src="./libs/angularjs/angular-route.min.js"></script>
+    <script type="application/javascript" src="./js/js.cookie.js"></script>
+    
+    <!--materialize js-->
+    <script type="application/javascript" src="./libs/materialize/js/materialize.js"></script>
+
+ 
+    <script src="./libs/jquery-validation-1.15.0/dist/jquery.validate.min.js"></script>
+    <script src="./libs/jqueryformmater/dist/jquery.formatter.min.js"></script>
+    <script type="application/javascript" src="./libs/momemntjs/moment.js"></script>
+    <script type="text/javascript" src="./js/re-tree.min.js"></script>
+    <script type="text/javascript" src="./js/ng-device-detector.min.js"></script>
+
+
+    <script>	
+/*		Global Variables	*/
+        var app = angular.module('Home', ['ngRoute','ngCookies','ng.deviceDetector']);
+        var selector = Cookies.get('selector');
+        var validator= Cookies.get('validator');
+        var userID = Cookies.get('userID');
+        var userType = Cookies.get('userType');
+        if(selector == null || validator== null || userID == null || userType == null){
+            window.location = '/login';
+        }else{
+            if(userType == 'ADMIN'){
+                app.config(['$routeProvider','$locationProvider','$provide',function ($routeProvider,$locationProvider,$provide) {
+                    $routeProvider
+                      .when('/users', {
+                          templateUrl: '/modules/users/users.html',
+                          controller: 'userCtr'
+                      })
+                      .when('/sites', {
+                          templateUrl: '/modules/sites/sites.html',
+                          controller: 'siteCtr'
+                      })
+                      .when('/zones', {
+                          templateUrl: '/modules/zones/zone.html',
+                          controller: 'zoneCtr'
+                      })
+                      .otherwise({
+                        redirectTo :  '/users'
+                      });
+        //            $provide.decorator('$sniffer', function($delegate) {
+        //              $delegate.history = true;
+        //              return $delegate;
+        //            });
+                    $locationProvider.html5Mode(true);
+                }]);
+            }else if(userType == 'USER'){
+                app.config(['$routeProvider','$locationProvider','$provide',function ($routeProvider,$locationProvider,$provide) {
+                    $routeProvider
+                      .when('/status', {
+                          templateUrl: '/modules/status/status.html',
+                          controller: 'statusCtr'
+                      })
+                      .when('/zoneControl/:zoneId', {
+                          templateUrl: '/modules/control/control.html',
+                            controller: 'controlCtr'
+                      })
+                      .otherwise({
+                        redirectTo :  '/status'
+                      });
+                    $locationProvider.html5Mode(true);
+                }]);
+            }
+        }
+        app.factory('RootSer',['$http','$rootScope',function($http,$rootScope){
+            var RootSers = {};
+            return RootSers;
+        }]);
+        
+        app.controller('HomeMain',['$scope','$rootScope','$http','$window','$location','$cookies','$timeout','RootSer','deviceDetector',function($scope,$rootScope,$http,$window,$location,$cookies,$timeout,RootSer,deviceDetector){
+            $rootScope.baseUrl='';
+            $rootScope.userDetails = {};
+            $scope.adminUser = false;
+            $rootScope.statusTimer = '';
+            $rootScope.controlTimer = '';
+            if(deviceDetector.isDesktop()){
+                $rootScope.desktop=true;
+            }else{
+                $rootScope.desktop=false;
+            }
+            $rootScope.$on('$routeChangeStart',function(){
+                showPreloader();
+                // $timeout(showPreloader,0,false);
+                console.log('routchange started'+Date.now());
+            });
+            $rootScope.$on('$routeChangeSuccess',function(){
+                console.log('routchange success'+Date.now());
+            });
+            $rootScope.userDetailsDone = false;
+              
+            $rootScope.getUserDetails = function(){
+                var selector = $cookies.get('selector');
+                var validator = $cookies.get('validator');
+                var userID = $cookies.get('userID');
+                var userType = $cookies.get('userType');
+
+                if(selector == null || validator == null || userID == null || userType == null){
+                    $cookies.remove('selector');
+                    $cookies.remove('validator');
+                    $cookies.remove('userID');
+                    $cookies.remove('userType');
+
+                    window.location = '/login';
+                }else{
+                    var url=$rootScope.baseUrl+ '/api/Logins/userDetails';
+                    $http({
+                        method: 'GET',
+                        url: url
+                    }).then(function successCallback(response) {
+                        
+                        var data = JSON.stringify(response.data);
+                        data=JSON.parse(data);
+                        console.log('responseData is'+JSON.stringify(data));
+                        //data = JSON.parse(data);
+                        if(data.returnStatus == "SUCCESS"){
+                            $rootScope.userDetails.loginId = data.responseData.loginId;
+                            $rootScope.userDetails.userType = data.responseData.userType;
+                            $rootScope.userDetails.siteId = data.responseData.siteId;
+                            $rootScope.userDetails.userName = data.responseData.userName;
+                            console.log('Root scope userdetails '+JSON.stringify($rootScope.userDetails));
+                            if($rootScope.userDetails.userType == "ADMIN"){
+                                $scope.adminUser = true;
+                            }
+                            $rootScope.userDetailsDone = true;
+                            // $timeout(function(){
+                            //     $('ul.tabs').tabs();
+                            // },0,false);
+                            $rootScope.$broadcast('DetailsDone');
+                        }
+                        else{
+                            Materialize.toast('Unexpected Error.Please Login Again',2000,'rounded',function(){
+                                //$cookies.remove('selector');
+                                //$cookies.remove('validator');
+                                //$cookies.remove('userID');
+                                //$cookies.remove('userType');
+                                //window.location = '/login';
+                            });
+                        }      
+                    },function errorCallback(response) {
+                        Materialize.toast('Unexpected Error.Please Login Again',2000,'rounded',function(){
+                            // $cookies.remove('selector');
+                            // $cookies.remove('validator');
+                            // $cookies.remove('userID');
+                            // $cookies.remove('userType');
+                            // window.location = '/login';
+                        });
+                    });
+                }
+            };
+            $scope.init = function(){
+
+                $rootScope.getUserDetails();
+            };
+            $scope.openUsers = function(){
+                $location.path('users');
+            }
+            $scope.openSites = function(){
+                $location.path('sites');
+            }
+            $scope.openZones = function(){
+                $location.path('zones');
+            }
+
+
+
+            
+            $scope.init();
+                
+            
+            
+            $rootScope.logout = function(){
+                $cookies.remove('selector');
+                $cookies.remove('validator');
+                $cookies.remove('userID');
+                $cookies.remove('userType');
+                window.location = '/login';
+            }
+        }]);
+        
+        
+        
+    </script>
+
+    <script type="text/javascript" src="./js/userhome.js"></script>
+    <script type="text/javascript" src="./modules/users/users.js"></script>
+    <script type="text/javascript" src="./modules/sites/sites.js"></script>
+    <script type="text/javascript" src="./modules/zones/zone.js"></script>
+    <script type="text/javascript" src="./modules/status/status.js"></script>
+    <script type="text/javascript" src="./modules/control/control.js"></script>
+</body>
+
+</html>

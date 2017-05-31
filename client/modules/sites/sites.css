@@ -1,0 +1,54 @@
+.sitesListRow{
+	margin: 0px;
+}
+.sitesListRow col{
+	padding: 0px;
+}
+.siteCard{
+	padding: 15px;
+}
+#createSiteModal .modal-content{
+	width: 100%;
+}
+#createSiteModal .row{
+	margin: 0px;
+}
+#createSiteModal .col {
+	padding: 0px;
+}
+#createSiteModal .submitButton{
+	text-align: center;
+}
+
+.deleteButton{
+    position: relative;
+    float: right;
+    bottom: 40px;
+    margin-right: 45%;
+    opacity: 0;
+    transition: bottom 400ms ease-in,opacity 600ms ease-in,transform 500ms ease-in;
+}
+.siteCard:hover .deleteButton{
+    bottom: 45px;
+    opacity: 1;
+}
+.siteCard{
+    cursor: pointer;
+}
+.deleteButton:hover{
+    -ms-transform: rotate(360deg); /* IE 9 */
+    -webkit-transform: rotate(360deg); /* Safari */
+    transform: rotate(360deg); /* Standard syntax */
+}
+.sitesListRow .col{
+    padding: 0px 5px !important;
+}
+.siteDetails span.value{
+    white-space: nowrap;
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: large;
+}
+.siteDetails span.label{
+    font-family: 'Itim', cursive;
+    font-size: large;
+}

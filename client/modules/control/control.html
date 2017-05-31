@@ -1,0 +1,55 @@
+<link href="./modules/control/control.css" type="text/css" rel="stylesheet" media="screen,projection">
+<div id="#control">
+	<div class="row controlRow">
+		<div class="col s12">
+			<div class="card controlCard hoverable waves-effect waves-grey">
+				<div class="controlDetails">
+                    <div class="controlName">
+                        <p class="zoneName">{{zoneStatus.zoneName}}</p>
+                    </div>
+                    <div class="voltageValues">
+                        <p class="fenceOut">Fence Output : <span>{{zoneStatus.fenceOut}}</span></p>
+                        <p class="fenceRet">Fence Retention : <span>{{zoneStatus.fenceRet}}</span></p>
+                        <p class="batteryVoltage">Battery Voltage : <span>{{zoneStatus.batteryVoltage}}</span></p>
+                        <p class="spVoltage">spv : <span>{{zoneStatus.spVoltage}} </span></p>
+                    </div>
+                    <div class="action_switches row">
+                        <div class="col s12 m4 l3">
+                            <span class="fenceStatus"><i class="fa fa-shield {{zoneStatus.fenceStatus}}"></i></span>
+                            <div class="switch fenceStatusSwitch">
+                                <label>
+                                  Off
+                                  <input type="checkbox" ng-change="inputChanged('FENCE')" ng-model="zoneStatus.fenceStatus" ng-true-value="'1'" ng-false-value="'0'">
+                                  <span class="lever"></span>
+                                  On
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col s12 m4 l3">
+                            <span class="lightStatus "><i class="fa fa-lightbulb-o {{zoneStatus.lightStatus}}"></i></span>
+                            <div class="switch lightStatusSwitch">
+                                <label>
+                                  Off
+                                  <input type="checkbox" ng-change="inputChanged('LIGHT')" ng-model="zoneStatus.lightStatus" ng-true-value="'1'" ng-false-value="'0'">
+                                  <span class="lever"></span>
+                                  On
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col s12 m4 l3">
+                            <span class="alarmStatus"><i class="fa fa-volume-up {{zoneStatus.alarmStatus}}"></i></span>
+                            <div class="switch alarmStatusSwitch">
+                                <label>
+                                  Off
+                                  <input type="checkbox" ng-change="inputChanged('ALARM')" ng-model="zoneStatus.alarmStatus" ng-true-value="'1'" ng-false-value="'0'">
+                                  <span class="lever"></span>
+                                  On
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

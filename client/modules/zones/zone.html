@@ -1,0 +1,87 @@
+<link href="./modules/zones/zone.css" type="text/css" rel="stylesheet" media="screen,projection">
+<div id="#zones">
+    <div class="row siteNameInput">
+        <div class="input-field  col s12 m3 user-select-div">
+            <select class="site-select" id="siteSelect" id="siteSelect" ng-model="selectedSite" ng-options="site as site.siteName for site in sites track by site.siteId" ng-change="selectChanged()">
+            </select>
+        </div>
+    </div>
+	<div class="row zonesListRow">
+		<div class="col s6 m4 l3" ng-repeat="zone in zones track by zone.zoneId">
+			<div class="card zoneCard">
+				<div class="zoneDetails">
+					<p class="zoneDetails"><span class="label">Zone name : </span><span class="value">{{zone.zoneName}}</span></p>
+                    <p class="zoneImei"><span class="label">Imei Number : </span><span class="value">{{zone.imeiNumber}}</span></p>
+					<a class="deleteButton btn-floating waves-effect waves-light red accent-4" ng-click="deleteZone(zone)"><i class="mdi-action-delete"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="fixed-action-btn fab-new-zone add-fab" style="bottom: 60px; right: 45px;">
+        <a class="btn-floating btn-large waves-effect waves-light button-link " ng-click="createZoneClicked()">
+            <i class="large mdi-content-add"></i>
+        </a>
+    </div>
+
+    <div id="createZoneModal" class="modal">
+        <div class="modal-content">
+            <div class="row content">
+                <div class="col s12">
+                    <div class="row zonenameinput">
+                        <div class="col s12">
+                            <div class="input-field">
+                                <input type="text" id="zone_name" ng-model="zonename" ng-focus="inputFocused()">
+                                <label for="zone_name">Zone name</label>
+                                <div class="errorName errorNameZonename">
+        							<div id="zonename-error"></div>
+    							</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row imeiinput">
+                        <div class="col s12">
+                            <div class="input-field">
+                                <input type="text" id="zone_imei" ng-model="zoneimei" ng-focus="inputFocused()">
+                                <label for="zone_name">Zone imei number</label>
+                                <div class="errorName errorNameZoneimei">
+                                    <div id="zoneimei-error"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row submitrow">
+                        <div class="col s12">
+                            <div class="submitButton">
+                                <a class="waves-effect waves-light btn-raised btn addZone" ng-click="createZone()">CREATE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="deleteZoneModel" class="modal">
+            <div class="model-content">
+                <div class="row content">
+                    <div class="col s12">
+                        <div class="row confirmmessage">
+                            <div class="col s12">
+                               <span class="deleteText">Are you sure you want to delete selected zone ?</span>
+                            </div>
+                        </div>
+                        <div class="row yesnorow">
+                            <div class="col s12">
+                                <div class="yesnoRow">
+                                    <a class="waves-effect waves-teal btn-flat deleteConfirmButton" ng-click="deleteZone()">DELETE</a>
+                                    <a class="waves-effect waves-grey btn-flat cancelDelete" ng-click="cancelDelete()">CANCEL</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

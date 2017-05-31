@@ -1,0 +1,206 @@
+{
+  "name": "ZoneStatus",
+  "options": {
+    "idInjection": false,
+    "mysql": {
+      "schema": "crown_fence_controller",
+      "table": "zone_status"
+    }
+  },
+  "properties": {
+    "packetId": {
+      "type": "Number",
+      "id": "serial",
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "packet_id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "Y"
+      }
+    },
+    "zoneId": {
+      "type": "Number",
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mysql": {
+        "columnName": "zone_id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    },
+    "siteId": {
+      "type": "Number",
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "required":true,
+      "mysql": {
+        "columnName": "site_id",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "N"
+      }
+    },
+    "fenceStatus": {
+      "type": "String",
+      "length": 2,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "fence_status",
+        "dataType": "varchar",
+        "dataLength": 2,
+        "dataPrecision": null,
+        "dataScale": null
+      }
+    },
+    "lightStatus": {
+      "type": "String",
+      "length": 2,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "light_status",
+        "dataType": "varchar",
+        "dataLength": 2,
+        "dataPrecision": null,
+        "dataScale": null
+      }
+    },
+    "alarmStatus": {
+      "type": "String",
+      "length": 2,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "alarm_status",
+        "dataType": "varchar",
+        "dataLength": 2,
+        "dataPrecision": null,
+        "dataScale": null
+      }
+    },
+    "acStatus": {
+      "type": "String",
+      "length": 2,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "ac_status",
+        "dataType": "varchar",
+        "dataLength": 2,
+        "dataPrecision": null,
+        "dataScale": null
+      }
+    },
+    "fenceOut": {
+      "type": "String",
+      "length": 50,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "fence_out",
+        "dataType": "varchar",
+        "dataLength": 50,
+        "dataPrecision": null,
+        "dataScale": null
+      }
+    },
+    "fenceRet": {
+      "type": "String",
+      "length": 50,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "fence_ret",
+        "dataType": "varchar",
+        "dataLength": 50,
+        "dataPrecision": null,
+        "dataScale": null
+      }
+    },
+    "batteryVoltage": {
+      "type": "String",
+      "length": 50,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "battery_voltage",
+        "dataType": "varchar",
+        "dataLength": 50,
+        "dataPrecision": null,
+        "dataScale": null
+      }
+    },
+    "spVoltage": {
+      "type": "String",
+      "length": 50,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "sp_voltage",
+        "dataType": "varchar",
+        "dataLength": 50,
+        "dataPrecision": null,
+        "dataScale": null
+      }
+    },
+    "createdOn": {
+      "type": "Date",
+      "required": false,
+      "length": null,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "created_on",
+        "dataType": "timestamp",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "updatedOn": {
+      "type": "Date",
+      "required": false,
+      "length": null,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "updated_on",
+        "dataType": "timestamp",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+  	"site": {
+      "type": "hasOne",
+      "model": "Sites",
+      "foreignKey": "siteId"
+    },
+    "zone": {
+      "type": "belongsTo",
+      "model": "Zones",
+      "foreignKey": "zoneId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

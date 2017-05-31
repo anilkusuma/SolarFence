@@ -1,0 +1,47 @@
+#control .row{
+	margin: 0px;
+}
+.controlCard{
+	padding: 10px;
+	width: 100%
+}
+.voltageValues p{
+	font-size: 20px;
+	padding: 0px 15px;
+	margin: 0px;
+	font-family: 'Ubuntu Mono', monospace;
+}
+.action_switches{
+	margin: 0px;
+	margin-top: 30px;
+}
+.action_switches span i{
+	font-size: 30px;
+	padding: 0px 20px;
+}
+.action_switches .col{
+	padding: 15px;
+	display: flex;
+}
+.action_switches .switch{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.action_switches i.Y{
+	color: green;
+}
+.action_switches i.N{
+	color: red;
+}
+.controlName p{
+    font-size: x-large;
+    font-weight: 500;
+	font-family: 'Fredoka One', cursive;
+}
+.controlName{
+	text-align: center;
+}
+.action_switches span{
+	width: 65px;
+}

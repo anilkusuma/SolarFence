@@ -1,0 +1,98 @@
+<link href="./modules/users/users.css" type="text/css" rel="stylesheet" media="screen,projection">
+<div id="#users">
+	<div class="row usersListRow">
+		<div class="col s6 m4 l3" ng-repeat="user in users track by user.loginId">
+			<div class="card userCard">
+				<div class="userDetails">
+					<p class="username"><span class="label">Username : </span><span class="value">{{user.userName}}</span></p>
+					<p class="siteDetails"><span class="label">Site : </span><span class="value">{{user.site.siteName}}</span></p>
+					<a class="deleteButton btn-floating waves-effect waves-light red accent-4" ng-click="deleteUser(user)"><i class="mdi-action-delete"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="fixed-action-btn fab-new-user add-fab" style="bottom: 60px; right: 45px;">
+        <a class="btn-floating btn-large waves-effect waves-light button-link" ng-click="createUserClicked()">
+            <i class="large mdi-content-add"></i>
+        </a>
+    </div>
+
+    <div id="createUserModal" class="modal">
+        <div class="modal-content">
+            <div class="row content">
+                <div class="col s12">
+                    <div class="row usernameinput">
+                        <div class="col s12">
+                            <div class="input-field">
+                                <input type="text" id="user_name" ng-model="username" ng-focus="inputFocused()">
+                                <label for="user_name">Username</label>
+                                <div class="errorName errorNameUsername">
+        							<div id="username-error"></div>
+    							</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row passwordinput">
+                        <div class="col s12">
+                            <div class="input-field">
+                                <input type="password" id="password" ng-model="password" ng-focus="inputFocused()">
+                                <label for="password">Password</label>
+                                <div class="errorName errorNamePassword">
+        							<div id="password-error"></div>
+    							</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row confirmpasswordinput">
+                        <div class="col s12">
+                            <div class="input-field">
+                                <input type="password" id="confirmPassword" ng-model="confirmPassword" ng-focus="inputFocused()">
+                                <label for="confirmPassword" >Confirm password</label>
+                                <div class="errorName errorNameConfirmPassword">
+        							<div id="cp-error"></div>
+    							</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row siteNameInput">
+                        <div class="input-field  col s12 user-select-div">
+                            <select class="usertype-select" id="userTypeSelect" id="userTypeSelect" ng-model="selectedSiteId" ng-options="site.siteId as site.siteName for site in sites track by site.siteId" >
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row submitrow">
+                        <div class="col s12">
+                            <div class="submitButton">
+                                <a class="waves-effect waves-light btn-raised btn addUser" ng-click="createUser()">CREATE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="deleteUserModel" class="modal">
+            <div class="model-content">
+                <div class="row content">
+                    <div class="col s12">
+                        <div class="row confirmmessage">
+                            <div class="col s12">
+                               <span class="deleteText">Are you sure you want to delete selected user ?</span>
+                            </div>
+                        </div>
+                        <div class="row yesnorow">
+                            <div class="col s12">
+                                <div class="yesnoRow">
+                                    <a class="waves-effect waves-teal btn-flat deleteConfirmButton" ng-click="deleteUser()">DELETE</a>
+                                    <a class="waves-effect waves-grey btn-flat cancelDelete" ng-click="cancelDelete()">CANCEL</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

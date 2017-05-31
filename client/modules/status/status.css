@@ -1,0 +1,46 @@
+.statusListRow{
+	margin: 0px;
+}
+.statusCard{
+	padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+.statusName{
+	padding: 0px 10px 0px 0px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-family: 'Abril Fatface', cursive;
+    font-size: large;
+    font-weight: 400;
+}
+.statusIcons span i{
+	font-size: 30px;
+}
+.statusIcons span{
+	padding: 0px 10px;
+}
+.voltageValues p{
+	margin: 0px;
+	font-size: large;
+	font-family: 'Ropa Sans', sans-serif;
+}
+.voltageValues {
+	padding: 0px 0px;
+}
+.statusIcons .Status1{
+	color: green;
+}
+.statusIcons .Status0{
+	color: red;
+}
+.voltageValues span{
+	white-space: nowrap;
+}
+.statusIcons{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}

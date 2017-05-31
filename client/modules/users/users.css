@@ -1,0 +1,52 @@
+.usersListRow{
+	margin: 0px;
+}
+.usersListRow col{
+	padding: 0px;
+}
+.userCard{
+	padding: 15px;
+}
+#createUserModal .modal-content{
+	width: 100%;
+}
+#createUserModal .row{
+	margin: 0px;
+}
+#createUserModal .col {
+	padding: 0px;
+}
+#createUserModal .submitButton{
+	text-align: center;
+    padding-top: 60px;
+}
+
+.deleteButton{
+    position: relative;
+    float: right;
+    bottom: 40px;
+    margin-right: 45%;
+    opacity: 0;
+    transition: bottom 400ms ease-in,opacity 600ms ease-in,transform 500ms ease-in;
+}
+.userCard:hover .deleteButton{
+    bottom: 60px;
+    opacity: 1;
+}
+.deleteButton:hover{
+    -ms-transform: rotate(360deg); /* IE 9 */
+    -webkit-transform: rotate(360deg); /* Safari */
+    transform: rotate(360deg); /* Standard syntax */
+}
+.usersListRow .col{
+    padding: 0px 5px !important;
+}
+.userDetails span.value{
+    white-space: nowrap;
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: large;
+}
+.userDetails span.label{
+    font-family: 'Itim', cursive;
+    font-size: large;
+}

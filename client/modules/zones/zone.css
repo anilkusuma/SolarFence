@@ -1,0 +1,54 @@
+.zonesListRow{
+	margin: 0px;
+}
+.zonesListRow col{
+	padding: 0px;
+}
+.zoneCard{
+	padding: 15px;
+}
+#createZoneModal .modal-content{
+	width: 100%;
+}
+#createZoneModal .row{
+	margin: 0px;
+}
+#createZoneModal .col {
+	padding: 0px;
+}
+#createZoneModal .submitButton{
+	text-align: center;
+}
+
+.deleteButton{
+    position: relative;
+    float: right;
+    bottom: 40px;
+    margin-right: 45%;
+    opacity: 0;
+    transition: bottom 400ms ease-in,opacity 600ms ease-in,transform 500ms ease-in;
+}
+.zoneCard:hover .deleteButton{
+    bottom: 65px;
+    opacity: 1;
+}
+.zoneCard{
+    cursor: pointer;
+}
+.deleteButton:hover{
+    -ms-transform: rotate(360deg); /* IE 9 */
+    -webkit-transform: rotate(360deg); /* Safari */
+    transform: rotate(360deg); /* Standard syntax */
+}
+.zonesListRow .col{
+    padding: 0px 5px !important;
+}
+.zoneDetails span.value{
+    white-space: nowrap;
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: large;
+}
+.zoneDetails span.label{
+    font-family: 'Itim', cursive;
+    font-size: large;
+}
